@@ -1,0 +1,28 @@
+name = "ellora-mdm-api"
+main = "src/index.js"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+
+# ---------------------------------------------------------------------------
+# D1 database binding.
+#
+# After I (the developer) run:
+#   wrangler d1 create ellora-mdm-db
+# it prints a `database_id`. Replace REPLACE_ME below with that UUID.
+# The `database_name` can stay as-is, or be changed to match what you passed
+# to `wrangler d1 create`.
+# ---------------------------------------------------------------------------
+[[d1_databases]]
+binding = "DB"
+database_name = "ellora-mdm-db"
+database_id = "57841ee5-4f9d-49ad-a6c9-f1a2898a996e"
+
+# ---------------------------------------------------------------------------
+# Secrets (do NOT put these here). Set with:
+#   wrangler secret put JWT_SECRET
+# ---------------------------------------------------------------------------
+
+# Runs the offline-sweep (see src/index.js `scheduled` handler) every minute,
+# marking devices offline once their last check-in is stale.
+[triggers]
+crons = ["* * * * *"]

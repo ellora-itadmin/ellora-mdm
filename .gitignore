@@ -1,0 +1,14 @@
+﻿node_modules/
+.wrangler/
+.env
+.env.*
+!.env.example
+*.db
+*.sqlite
+web/dist/
+web/public/agent-update/
+dist/
+**/bin/
+**/obj/
+*.log
+.dev.vars
